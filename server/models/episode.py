@@ -9,5 +9,21 @@ class Episode(db.Model):
     
     appearances = db.relationship('Appearance', backref='episode', lazy=True, cascade='all, delete-orphan')
     
-    def __repr__(self):
+def __init__(self, date, number):
+        self.date = date
+        self.number = number
+    
+def to_dict(self, include_appearances=False):
+        episode_dict = {
+            'id': self.id,
+            'date': self.date.isoformat(),
+            'number': self.number
+        }
+        
+        if include_appearances:
+            episode_dict['appearances'] = [appearance.to_dict() for appearance in self.appearances]
+        
+        return episode_dict
+
+def __repr__(self):
         return f'<Episode {self.number}>'
