@@ -20,5 +20,19 @@ class Appearance(db.Model):
             raise ValueError('Rating must be between 1 and 5')
         return rating
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'rating': self.rating,
+            'guest_id': self.guest_id,
+            'episode_id': self.episode_id,
+            'guest': self.guest.to_dict() if self.guest else None,
+            'episode': {
+                'id': self.episode.id,
+                'date': self.episode.date.isoformat(),
+                'number': self.episode.number
+            } if self.episode else None
+        }
+
     def __repr__(self):
         return f'<Appearance {self.id}>'
