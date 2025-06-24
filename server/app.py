@@ -27,3 +27,17 @@ def create_app():
     CORS(app)
     
     from server.models import User, Report, Patrol, UserPatrol, CommunityPost, SecurityDog
+
+    from server.controllers.auth_controller import auth_bp
+    from server.controllers.report_controller import report_bp
+    from server.controllers.patrol_controller import patrol_bp
+    from server.controllers.community_controller import community_bp
+    from server.controllers.dog_controller import dog_bp
+    from server.controllers.stats_controller import stats_bp
+        
+    app.register_blueprint(auth_bp, url_prefix='/api/auth')
+    app.register_blueprint(report_bp, url_prefix='/api')
+    app.register_blueprint(patrol_bp, url_prefix='/api')
+    app.register_blueprint(community_bp, url_prefix='/api')
+    app.register_blueprint(dog_bp, url_prefix='/api')
+    app.register_blueprint(stats_bp, url_prefix='/api')
