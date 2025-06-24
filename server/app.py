@@ -41,3 +41,19 @@ def create_app():
     app.register_blueprint(community_bp, url_prefix='/api')
     app.register_blueprint(dog_bp, url_prefix='/api')
     app.register_blueprint(stats_bp, url_prefix='/api')
+
+    @app.route('/')
+    def index():
+        return {
+            'message': 'Welcome to Neighborhood Watch Platform API',
+            'version': '1.0.0',
+            'endpoints': {
+                'auth': ['/api/auth/register', '/api/auth/login'],
+                'reports': ['/api/reports'],
+                'patrols': ['/api/patrols'],
+                'community': ['/api/community-posts'],
+                'dogs': ['/api/security-dogs']
+            }
+        }
+    
+    return app
