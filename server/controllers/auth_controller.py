@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from server.app import db
 from server.models.user import User
 
@@ -60,6 +60,23 @@ def login():
         return jsonify({
             'message': 'Login successful',
             'access_token': access_token,
+            'user': user.to_dict()
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@auth_bp.route('/verify', methods=['GET'])
+@jwt_required()
+def verify():
+    try:
+        current_user_id = get_jwt_identity()
+        user = User.query.get(current_user_id)
+        
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        
+        return jsonify({
             'user': user.to_dict()
         }), 200
         
