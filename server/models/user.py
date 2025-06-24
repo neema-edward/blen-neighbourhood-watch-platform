@@ -17,5 +17,14 @@ class User(db.Model):
     community_posts = db.relationship('CommunityPost', backref='created_by_user', lazy=True, cascade='all, delete-orphan')
     assigned_dog = db.relationship('SecurityDog', backref='assigned_to_user', lazy=True, uselist=False)
 
+    def __init__(self, username, email, password, role='resident'):
+        self.username = username
+        self.email = email
+        self.password_hash = generate_password_hash(password)
+        self.role = role
+    
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
     def __repr__(self):
         return f'<User {self.username}>'
