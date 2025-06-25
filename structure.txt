@@ -1,0 +1,59 @@
+.
+├── challenge-4-lateshow.postman_collection.json
+├── index.html
+├── package.json
+├── package-lock.json
+├── Pipfile
+├── postcss.config.js
+├── README.md
+├── server
+│   ├── app.py
+│   ├── config.py
+│   ├── controllers
+│   │   ├── appearance_controller.py
+│   │   ├── auth_controller.py
+│   │   ├── community_controller.py
+│   │   ├── dog_controller.py
+│   │   ├── episode_controller.py
+│   │   ├── guest_controller.py
+│   │   ├── __init__.py
+│   │   ├── patrol_controller.py
+│   │   ├── report_controller.py
+│   │   └── stats_controller.py
+│   ├── models
+│   │   ├── appearance.py
+│   │   ├── community_post.py
+│   │   ├── episode.py
+│   │   ├── guest.py
+│   │   ├── __init__.py
+│   │   ├── patrol.py
+│   │   ├── report.py
+│   │   ├── security_dog.py
+│   │   ├── user_patrol.py
+│   │   └── user.py
+│   └── seed.py
+├── src
+│   ├── App.jsx
+│   ├── components
+│   │   ├── AuthForms.jsx
+│   │   ├── CommunityPostForm.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── ReportCard.jsx
+│   │   ├── ReportForm.jsx
+│   │   └── SecurityDogForm.jsx
+│   ├── context
+│   │   └── AuthContext.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   └── pages
+│       ├── CommunityPage.jsx
+│       ├── HomePage.jsx
+│       ├── PatrolsPage.jsx
+│       ├── ReportsPage.jsx
+│       ├── SecurityDogPage.jsx
+│       └── UserProfilePage.jsx
+├── structure.txt
+├── tailwind.config.js
+└── vite.config.js
+
+8 directories, 49 files
